@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name Entry Form</title>
+</head>
+<body>
+  <h2>Enter Name:</h2>
+  <form id="nameForm">
+    <input type="text" id="nameInput" placeholder="Enter name" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('nameForm');
+    const nameInput = document.getElementById('nameInput');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const response = await fetch('https://script.google.com/macros/s/AKfycbw2GRrf5eamDZy2cIqFQZJK1TVs-ymXy8dsLmIX5BtSmFYAkMutw6kwjMDskp4duQxL/exec', {
+        method: 'POST',
+        body: new URLSearchParams({ name: nameInput.value })
+      });
+
+      if (response.ok) {
+        alert('Name submitted successfully!');
+        nameInput.value = ''; // Clear input field after submission
+      } else {
+        alert('Error submitting name.');
+      }
+    });
+  </script>
+  <link rel="manifest" href="/manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
+
+</body>
+</html>
