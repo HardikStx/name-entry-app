@@ -3,7 +3,11 @@ const urlsToCache = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/icon.png' // Make sure icon.png is in the same directory as your other files
+  '/icon512_maskable.png'
+   '/icon512_rounded.png'
+  
+
+  // Make sure icon.png is in the same directory as your other files
   // Add any additional files or assets you want to cache
 ];
 
